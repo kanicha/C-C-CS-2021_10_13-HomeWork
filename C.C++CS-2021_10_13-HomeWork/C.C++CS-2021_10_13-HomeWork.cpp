@@ -77,7 +77,7 @@ int main()
 		printf("num = %d\n", array.Get(i));
 	}
 
-	// 例外チェック
+	// 例外処理チェック
 	"num = %d\n", array.Get(-1);
 	"num = %d\n", array.Get(1000);
 }
