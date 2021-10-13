@@ -44,7 +44,7 @@ void Array::Create(int array)
 /// <param name="setArrayNum">配列を設定する数値</param>
 int Array::Get(int getArrayNum)
 {
-	if (getArrayNum > 0 && getArrayNum < createNum)
+	if (getArrayNum >= 0 && getArrayNum < createNum)
 		return arrayNum[getArrayNum];
 	else
 		return NULL;
@@ -56,7 +56,7 @@ int Array::Get(int getArrayNum)
 /// <param name="setArrayNum">配列を設定する数値</param>
 void Array::Set(int setArrayNum)
 {
-	if (setArrayNum > 0 && setArrayNum < createNum)
+	if (setArrayNum >= 0 && setArrayNum < createNum)
 		arrayNum[setArrayNum] = setArrayNum;
 	else
 		return;
