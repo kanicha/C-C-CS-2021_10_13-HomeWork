@@ -5,6 +5,7 @@ class Array
 {
 private:
 	int* arrayNum;
+	int createNum = 0;
 
 public:
 	// コンストラクタ
@@ -15,7 +16,7 @@ public:
 	}
 
 	void Create(int array);
-	void Get(int getArrayNum);
+	int Get(int getArrayNum);
 	void Set(int setArrayNum);
 
 	// デストラクタ 
@@ -34,16 +35,19 @@ public:
 void Array::Create(int array)
 {
 	arrayNum = new int[array];
+	createNum = array;
 }
 
 /// <summary>
-/// 値を習得する関数
+/// 配列を設定する関数
 /// </summary>
-/// <param name="getArrayNum">配列を習得する数値</param>
-void Array::Get(int getArrayNum)
+/// <param name="setArrayNum">配列を設定する数値</param>
+int Array::Get(int getArrayNum)
 {
-	printf("num = %d\n", arrayNum[getArrayNum]);
-
+	if (getArrayNum > 0 && getArrayNum < createNum)
+		return arrayNum[getArrayNum];
+	else
+		return NULL;
 }
 
 /// <summary>
@@ -52,12 +56,15 @@ void Array::Get(int getArrayNum)
 /// <param name="setArrayNum">配列を設定する数値</param>
 void Array::Set(int setArrayNum)
 {
-	arrayNum[setArrayNum] = setArrayNum;
+	if (setArrayNum > 0 && setArrayNum < createNum)
+		arrayNum[setArrayNum] = setArrayNum;
+	else
+		return;
 }
 
 int main()
 {
-    Array array;
+	Array array;
 	array.Create(1000);
 
 	for (int i = 0; i < 1000; i++)
@@ -67,7 +74,11 @@ int main()
 
 	for (int i = 0; i < 1000; i++)
 	{
-		array.Get(i);
+		printf("num = %d\n", array.Get(i));
 	}
+
+	// 例外チェック
+	"num = %d\n", array.Get(-1);
+	"num = %d\n", array.Get(1000);
 }
 
